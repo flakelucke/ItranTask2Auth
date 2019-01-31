@@ -1,0 +1,45 @@
+﻿@model IList<Person>
+@{
+    ViewData["Title"] = "Home Page";
+}
+ @if (User.Identity.IsAuthenticated)
+{     
+        <div class="d-flex flex-row bd-highlight align-items-center">     
+            <input type="button" class="btn btn-info" id="check-all-btn" value="Select all" >
+                <input type="checkbox" id="check_all" class="check_all" hidden="true">             
+            </input> 
+            <button type="submit" form="form-input" class="btn btn-danger delete-user-btn" asp-controller="Home" asp-action="DeleteUser">Delete</button>
+            <button type="submit" form="form-input" class="btn btn-danger block-user-bth" asp-controller="Home" asp-action="BlockUser">To block</button>
+        </div>
+
+        <table class="table">
+        <thead>
+            <tr> 
+            <th scope="col d-flex">
+            </th>
+                <th scope="col">Account Id</th>
+                <th scope="col">Account Name</th>
+                <th scope="col">IsBlocked</th>
+                <th scope="col">LastActivity</th>
+            </tr>
+        </thead>
+        <tbody>   
+        <form id="form-input" method="post">
+            @foreach(var item in Model ){     
+                <tr>
+                    <th scope="row">
+                        <input type="checkbox" class="form-check-input checkbox" name="id" value=@item.AccountId>
+                        <label class="form-check-label" for="exampleCheck1"></label>
+                    </th>
+                    <td>@item.AccountId</td>
+                    <td>@item.AccountName</td>
+                    <td>@item.IsBlocked</td>
+                    <td>@item.LastIn</td>
+                </tr>
+                }
+        </form>
+        </tbody>
+        </table>
+}
+else 
+{<h1>You are not logget in</h1>}

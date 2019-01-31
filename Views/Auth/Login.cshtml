@@ -1,0 +1,13 @@
+@model IEnumerable<String>
+@{
+    ViewData["Title"]="SignIn";
+}
+@ViewBag.IsBlocked
+<div class="log-btn btn-group" >
+@foreach (var item in @Model)
+{
+    <div class>
+    <a class="btn btn-outline-primary login-button btn-lg" asp-action="SignIn" asp-route-provider="@item">@item</a>
+    </div>
+}
+</div>
