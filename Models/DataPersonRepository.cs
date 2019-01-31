@@ -34,9 +34,9 @@ namespace SecondTask.Models
 
         public async Task DeleteUserAsync(string[] accountId)
         {
-            for (int i = 0; i < accountId.Length; i++)
+            foreach(var item in accountId)
             {
-                var personForDelete = await FindByAccountIdAsync(accountId[i]);
+                var personForDelete = await FindByAccountIdAsync(item);
                 context.Remove(personForDelete);
             }
             await context.SaveChangesAsync();
@@ -44,10 +44,10 @@ namespace SecondTask.Models
 
         public async Task BlockUserAsync(string[] accountId)
         {
-            for (int i = 0; i < accountId.Length; i++)
+           foreach(var item in accountId)
             {
-                var personForDelete = await FindByAccountIdAsync(accountId[i]);
-                personForDelete.IsBlocked = personForDelete.IsBlocked == true ? false : true;
+                var personForBlock = await FindByAccountIdAsync(item);
+                personForBlock.IsBlocked = personForBlock.IsBlocked == true ? false : true;
             }
             await context.SaveChangesAsync();
         }
