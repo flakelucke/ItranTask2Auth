@@ -5,11 +5,11 @@
  @if (User.Identity.IsAuthenticated)
 {     
         <div class="d-flex flex-row bd-highlight align-items-center">     
-            <input type="button" class="btn btn-info" id="check-all-btn" value="Select all" >
-                <input type="checkbox" id="check_all" class="check_all" hidden="true">             
+            <input type="submit" class="btn btn-info input-click" id="check-all-btn" value="Select all" >
+                <input type="checkbox" id="check_all" class="check_all checkboxindex" hidden="true">             
             </input> 
-            <button type="submit" form="form-input" class="btn btn-danger delete-user-btn" asp-controller="Home" asp-action="DeleteUser">Delete</button>
-            <button type="submit" form="form-input" class="btn btn-danger block-user-bth" asp-controller="Home" asp-action="BlockUser">To block</button>
+            <button type="submit" hidden="true" form="form-input" class="btn btn-danger delete-user-btn btn-input" asp-controller="Home" asp-action="DeleteUser">Delete</button>
+            <button type="submit" hidden="true" form="form-input" class="btn btn-danger block-user-bth btn-input" asp-controller="Home" asp-action="BlockUser">Block/Unlock</button>
         </div>
 
         <table class="table">
@@ -28,7 +28,7 @@
             @foreach(var item in Model ){     
                 <tr>
                     <th scope="row">
-                        <input type="checkbox" class="form-check-input checkbox" name="id" value=@item.AccountId>
+                        <input type="checkbox" class="form-check-input checkbox checkboxindex input-click" name="id" value=@item.AccountId>
                         <label class="form-check-label" for="exampleCheck1"></label>
                     </th>
                     <td>@item.AccountId</td>

@@ -15,8 +15,24 @@ $(document).ready(function() {
     });
 });
 
+
+
 $(document).ready(function() {
     $("#check_all").click(check_all());
 });
 
+$(document).ready(function() {
+    $(".input-click").click(function() {
+        var arrayOfInputs = document.getElementsByClassName("checkboxindex");
+        for(var i = 0;i<arrayOfInputs.length;i++)
+        {
+            if ($(arrayOfInputs[i]).is(":checked")){
+                $('.btn-input').prop("hidden",false);
+                return;
+            }
+            else 
+                $('.btn-input').prop('hidden',true);
+        }
+    });
+});
 
